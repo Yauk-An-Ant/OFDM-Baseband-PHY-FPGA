@@ -1,0 +1,7 @@
+Time resolution is 1 ps
+$finish called at time : 90 ns : File "/home/achary/achary/Projects/OFDM/tb/tb_top.sv" Line 28
+$finish called at time : 90 ns : File "/home/achary/achary/Projects/OFDM/tb/tb_top.sv" Line 28
+$finish called at time : 90 ns : File "/home/achary/achary/Projects/OFDM/tb/tb_top.sv" Line 28
+$finish called at time : 90 ns : File "/home/achary/achary/Projects/OFDM/tb/tb_top.sv" Line 28
+$finish called at time : 90 ns : File "/home/achary/achary/Projects/OFDM/tb/tb_top.sv" Line 28
+INFO: xsimkernel Simulation Memory Usage: 282176 KB (Peak: 335596 KB), Simulation CPU Usage: 780 ms
