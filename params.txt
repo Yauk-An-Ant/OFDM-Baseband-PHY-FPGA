@@ -1,0 +1,15 @@
+QPSK:
+Fixed-Point Architecture (Q1.15 Output)
+
+
+FFT:
+subcarriers N = 64
+Fixed-Point Architecture (Q3.11 Output)
+
+
+IFFT:
+Fixed-Point Architecture (Q3.11 Input, Q1.15 Output)
+
+
+
+
