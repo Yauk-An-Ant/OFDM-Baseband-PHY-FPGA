@@ -25,8 +25,8 @@ for i in range(num_symbols):
 
     i = curr_bits[::2]
     q = curr_bits[1::2]
-    qpsk_symbols = (1 - 2*i) + 1j * (1 - 2*q)
-    qpsk_fxp = quantize(qpsk_symbols, wordlength=16, fraclength=14)
+    qpsk_symbols = ((1 - 2*i) + 1j * (1 - 2*q)) * 0.707
+    qpsk_fxp = quantize(qpsk_symbols, wordlength=16, fraclength=15)
 
     #IFFT
     time_symbol = np.fft.ifft(qpsk_fxp, N)
@@ -52,11 +52,11 @@ for i in range(num_symbols):
 
     true_rx = curr_rx[CP:CP+N]
     rx_qpsk = np.fft.fft(true_rx, N)
-    rx_fxp = quantize(rx_qpsk, wordlength=16, fraclength=14)
+    rx_fxp = quantize(rx_qpsk, wordlength=16, fraclength=15)
     all_rx_fxp = np.concatenate([all_rx_fxp, rx_fxp])
 
     rx_i = (np.real(rx_fxp) < 0).astype(int)
-    rx_q = (np.imag(rx_fxp) > 0).astype(int)
+    rx_q = (np.imag(rx_fxp) < 0).astype(int)
 
     rx_symbol_bits = np.empty(curr_bits.shape, dtype=int)
     rx_symbol_bits[::2] = rx_i
