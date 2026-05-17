@@ -8,7 +8,7 @@ plt.style.use('dark_background')
 N = 64
 CP = 16
 mod_order = 2
-num_symbols = 10
+num_symbols = 20
 
 #Transmitter
 
@@ -30,7 +30,7 @@ for i in range(num_symbols):
 
     #IFFT
     time_symbol = np.fft.ifft(qpsk_fxp, N)
-    time_fxp = quantize(time_symbol, wordlength=16, fraclength=10)
+    time_fxp = quantize(time_symbol, wordlength=16, fraclength=13)
 
     cp_list = time_fxp[-CP:]
     tx_signal = np.concatenate([tx_signal, cp_list, time_fxp])

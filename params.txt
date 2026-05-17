@@ -4,11 +4,12 @@ Fixed-Point Architecture (Q1.15 Output)
 
 FFT:
 subcarriers N = 64
-Fixed-Point Architecture (Q3.11 Output)
+Fixed-Point Architecture (Q6.10 Output)
 
 
 IFFT:
-Fixed-Point Architecture (Q3.11 Input, Q1.15 Output)
+subcarriers N = 64
+Fixed-Point Architecture (Q6.10 Input, Q1.15 Output)
 
 
 
