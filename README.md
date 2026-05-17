@@ -122,14 +122,14 @@ The cyclic prefix handler is a parameterized module that can both insert a cycli
 | -------------- | ----- | ------------------------------------------------------------- |
 | TRIM           | 1     | Selects whether the module inserts or trims the cyclic prefix |
 
-| Port Name | Direction | Width | Description                                                     |
-| --------- | --------- | ----- | --------------------------------------------------------------- |
-| clk       | Input     | 1     | System clock                                                    |
-| n_rst     | Input     | 1     | Global active-low reset                                         |
-| in_i      | Input     | 16    | Real input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)     |
-| in_q      | Input     | 16    | Complex input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)  |
-| out_i     | Output    | 16    | Real output sample stream ($Q1.15$ if FFT, $Q6.10$  if IFFT)    |
-| out_q     | Output    | 16    | Complex output sample stream ($Q1.15$ if FFT, $Q6.10$  if IFFT) |
+| Port Name | Direction | Width | Description                   |
+| --------- | --------- | ----- | ----------------------------- |
+| clk       | Input     | 1     | System clock                  |
+| n_rst     | Input     | 1     | Global active-low reset       |
+| in_i      | Input     | 16    | Real input sample stream      |
+| in_q      | Input     | 16    | Complex input sample stream   |
+| out_i     | Output    | 16    | Real output sample stream     |
+| out_q     | Output    | 16    | Complex output sample streamz |
 ## 5. Verification Strategy
 
 ### 5.1 Noise Module Specification
