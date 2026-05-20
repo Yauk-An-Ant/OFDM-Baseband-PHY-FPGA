@@ -42,7 +42,7 @@ The system operates on a Synchronous Continuous Stream Architecture. Sub-modules
 
 ### 3.1 Transmitter Top Level RTL Diagram
 
-!(/diagrams/transmittercorertl.png)
+![](/diagrams/transmittercorertl.png)
 ### 3.2 Receiver Top Level RTL Diagram
 
 ![[receivercorertl.png]]
