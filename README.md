@@ -45,19 +45,19 @@ The system operates on a Synchronous Continuous Stream Architecture. Sub-modules
 ![](/diagrams/transmittercorertl.png)
 ### 3.2 Receiver Top Level RTL Diagram
 
-![[receivercorertl.png]]
+![](/diagrams/receivercorertl.png)
 ### 3.3 QPSK Mapper RTL Diagram
 
-![[qpskmapperrtl.png]]
+![](/diagrams/qpskmapperrtl.png)
 ### 3.4 QPSK Demapper RTL Diagram
 
-![[qpskdemapperrtl.png]]
+![](/diagrams/qpskdemapperrtl.png)
 ### 3.5 FFT Core RTL Diagram
 
 
 ### 3.6 Cyclic Prefix Handler RTL Diagram
 
-![[cyclicprefixrtl.png]]
+![](/diagrams/cyclicprefixrtl.png)
 ## 4. Hardware Module Specifications
 
 ### 4.1 Transmitter Top Level Core (```ofdm_tx.sv```)
