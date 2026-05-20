@@ -42,8 +42,22 @@ The system operates on a Synchronous Continuous Stream Architecture. Sub-modules
 
 ### 3.1 Transmitter Top Level RTL Diagram
 
+![[transmittercorertl.png]]
 ### 3.2 Receiver Top Level RTL Diagram
 
+![[receivercorertl.png]]
+### 3.3 QPSK Mapper RTL Diagram
+
+![[qpskmapperrtl.png]]
+### 3.4 QPSK Demapper RTL Diagram
+
+![[qpskdemapperrtl.png]]
+### 3.5 FFT Core RTL Diagram
+
+
+### 3.6 Cyclic Prefix Handler RTL Diagram
+
+![[cyclicprefixrtl.png]]
 ## 4. Hardware Module Specifications
 
 ### 4.1 Transmitter Top Level Core (```ofdm_tx.sv```)
@@ -109,8 +123,10 @@ The FFT Core is a parameterized Fast Fourier Transform Acceleration block that t
 | --------- | --------- | ----- | --------------------------------------------------------------- |
 | clk       | Input     | 1     | System clock                                                    |
 | n_rst     | Input     | 1     | Global active-low reset                                         |
+| valid     | Input     | 1     | Indicates that the input data is valid                          |
 | in_i      | Input     | 16    | Real input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)     |
 | in_q      | Input     | 16    | Complex input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)  |
+| done      | Output    | 1     | Signals that the FFT/IFFT computation is finished               |
 | out_i     | Output    | 16    | Real output sample stream ($Q1.15$ if FFT, $Q6.10$  if IFFT)    |
 | out_q     | Output    | 16    | Complex output sample stream ($Q1.15$ if FFT, $Q6.10$  if IFFT) |
 ### 4.6 Cyclic Prefix Handler (```cyclic_prefix_handler.sv```)
@@ -122,14 +138,16 @@ The cyclic prefix handler is a parameterized module that can both insert a cycli
 | -------------- | ----- | ------------------------------------------------------------- |
 | TRIM           | 1     | Selects whether the module inserts or trims the cyclic prefix |
 
-| Port Name | Direction | Width | Description                   |
-| --------- | --------- | ----- | ----------------------------- |
-| clk       | Input     | 1     | System clock                  |
-| n_rst     | Input     | 1     | Global active-low reset       |
-| in_i      | Input     | 16    | Real input sample stream      |
-| in_q      | Input     | 16    | Complex input sample stream   |
-| out_i     | Output    | 16    | Real output sample stream     |
-| out_q     | Output    | 16    | Complex output sample streamz |
+| Port Name    | Direction | Width | Description                                                                            |
+| ------------ | --------- | ----- | -------------------------------------------------------------------------------------- |
+| clk          | Input     | 1     | System clock                                                                           |
+| n_rst        | Input     | 1     | Global active-low reset                                                                |
+| valid_data   | Input     | 1     | Indicates that the IFFT is done processing the symbol and to start counting the inputs |
+| in_i         | Input     | 16    | Real input sample stream                                                               |
+| in_q         | Input     | 16    | Complex input sample stream                                                            |
+| valid_symbol | Output    | 1     | Signals that the data is part of the symbol and not the stripped cyclic prefix segment |
+| out_i        | Output    | 16    | Real output sample stream                                                              |
+| out_q        | Output    | 16    | Complex output sample stream                                                           |
 ## 5. Verification Strategy
 
 ### 5.1 Noise Module Specification
