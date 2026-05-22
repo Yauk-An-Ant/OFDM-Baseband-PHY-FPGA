@@ -84,14 +84,15 @@ This module fully encapsulates the transmission baseband pipeline, handling the 
 This module fully encapsulates the reception baseband pipeline, handling the transition from a time-domain complex waveform into frequency-domain soft metrics. It accepts a continuous input stream of complex time-domain samples in `Q6.10` format from an external channel or ADC interface. The Cyclic Prefix Handler strips the 16-sample prefix, routing the 64-sample frames to the FFT core to demodulate the subcarriers back to the frequency domain. Finally, the normalized frequency-domain values (`Q1.15`) are processed by the soft-decision QPSK Demapper, which extracts and serializes a continuous stream of 4-bit Log-Likelihood Ratios (LLRs) for downstream error-correction units.
 #### 4.2.2 Portmap
 
-| Port Name | Direction | Width | Description                                                          |
-| --------- | --------- | ----- | -------------------------------------------------------------------- |
-| clk       | Input     | 1     | System clock                                                         |
-| n_rst     | Input     | 1     | Global active-low asynchronous reset                                 |
-| valid_in  | Input     | 1     | Indicates valid input data                                           |
-| in_i      | Input     | 16    | Real time-domain component from channel/ADC ($Q6.10$ format)         |
-| in_q      | Input     | 16    | Complex time-domain component from channel/ADC      ($Q6.10$ format) |
-| llr_out   | Output    | 4     | 4-bit Signed Log-Likelihood Ratio stream                             |
+| Port Name | Direction | Width | Description                                                                   |
+| --------- | --------- | ----- | ----------------------------------------------------------------------------- |
+| clk       | Input     | 1     | System clock                                                                  |
+| n_rst     | Input     | 1     | Global active-low asynchronous reset                                          |
+| valid_in  | Input     | 1     | Indicates valid input data                                                    |
+| in_i      | Input     | 16    | Real time-domain component from channel/ADC ($Q6.10$ format)                  |
+| in_q      | Input     | 16    | Complex time-domain component from channel/ADC      ($Q6.10$ format)          |
+| llr_i     | Output    | 4     | 4-bit Real Component Signed Log-Likelihood Ratio stream (two's complement)    |
+| llr_q     | Output    | 4     | 4-bit Complex Component Signed Log-Likelihood Ratio stream (two's complement) |
 ### 4.3 QPSK Mapper (```qpsk_mapper.sv```)
 #### 4.3.1 Module Description
 The QPSK mapper converts a serial input bitstream grouped into 2-bit symbols into complex frequency domain coordinates. The two bits determine the sign of the real $I$ component, and the complex $Q$ component (e.g. ```10```, $1-j$), which are then normalized by scaling by a factor of 0.707 to prevent overflow.
@@ -109,13 +110,12 @@ The QPSK mapper converts a serial input bitstream grouped into 2-bit symbols int
 The QPSK demapper is a soft-decision demodulation block that converts a complex time-domain wave into a continuous output stream of log likelihood ratios. The input values determine the sign of the real $I$ and complex $Q$ components.  These are then converted into 4-bit LLR values to account for noise and allow downstream error correction units to recover the original data bits with better precision, even under severe channel degradation.
 #### 4.4.2 Portmap
 
-| Port Name | Direction | Width | Description                                                 |
-| --------- | --------- | ----- | ----------------------------------------------------------- |
-| clk       | Input     | 1     | System clock                                                |
-| n_rst     | Input     | 1     | Global active-low asynchronous reset                        |
-| in_i      | Input     | 16    | Real frequency-domain component from FFT                    |
-| in_q      | Input     | 16    | Complex frequency-domain component from FFT                 |
-| llr_out   | Output    | 4     | 4-bit Signed Log-Likelihood Ratio stream (two's complement) |
+| Port Name | Direction | Width | Description                                                                   |
+| --------- | --------- | ----- | ----------------------------------------------------------------------------- |
+| in_i      | Input     | 16    | Real frequency-domain component from FFT                                      |
+| in_q      | Input     | 16    | Complex frequency-domain component from FFT                                   |
+| llr_i     | Output    | 4     | 4-bit Real Component Signed Log-Likelihood Ratio stream (two's complement)    |
+| llr_q     | Output    | 4     | 4-bit Complex Component Signed Log-Likelihood Ratio stream (two's complement) |
 
 ### 4.5 FFT Core (```fft_64_core.sv```)
 #### 4.5.1 Module Description
