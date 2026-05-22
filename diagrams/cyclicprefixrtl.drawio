@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" scale="1" border="0">
   <diagram name="Page-1" id="_1PrGAkTGmLhQMLklKeK">
-    <mxGraphModel dx="2086" dy="2454" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="707" dy="1551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -31,7 +31,7 @@
         <mxCell id="mfj3e9-OGvD96PZClYoB-3" edge="1" parent="1" source="olPFpjtiA2bztvB_1bjr-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mfj3e9-OGvD96PZClYoB-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="olPFpjtiA2bztvB_1bjr-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;counter = 0&lt;/div&gt;&lt;div&gt;if(counter &amp;lt; 16)&amp;nbsp;&lt;/div&gt;&lt;div&gt;valid_symbol = 0&lt;/div&gt;&lt;div&gt;out_i = 16&#39;h0000&lt;/div&gt;&lt;div&gt;out_q = 16&#39;h0000&lt;/div&gt;&lt;div&gt;else&lt;/div&gt;&lt;div&gt;valid_symbol = 1&lt;/div&gt;&lt;div&gt;out_i = in_i&lt;/div&gt;&lt;div&gt;out_q = in_q&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;counter = counter + 1&lt;/div&gt;&lt;div&gt;if(counter == 80)&lt;/div&gt;&lt;div&gt;counter = 0&lt;/div&gt;" vertex="1">
+        <mxCell id="olPFpjtiA2bztvB_1bjr-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;div&gt;counter = 0&lt;/div&gt;&lt;div&gt;if(counter &amp;lt; 16)&amp;nbsp;&lt;/div&gt;&lt;div&gt;valid_symbol = 0&lt;/div&gt;&lt;div&gt;out_i = 16&#39;h0000&lt;/div&gt;&lt;div&gt;out_q = 16&#39;h0000&lt;/div&gt;&lt;div&gt;else&lt;/div&gt;&lt;div&gt;valid_symbol = 1&lt;/div&gt;&lt;div&gt;out_i = in_i&lt;/div&gt;&lt;div&gt;out_q = in_q&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;if(valid) {&lt;/div&gt;&lt;div&gt;counter = counter + 1&lt;/div&gt;&lt;div&gt;if(counter == 80)&lt;/div&gt;&lt;div&gt;counter = 0&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" vertex="1">
           <mxGeometry height="200" width="200" x="480" y="160" as="geometry" />
         </mxCell>
         <mxCell id="olPFpjtiA2bztvB_1bjr-104" edge="1" parent="1" source="olPFpjtiA2bztvB_1bjr-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value=" ">
@@ -418,6 +418,9 @@
         </mxCell>
         <mxCell id="olPFpjtiA2bztvB_1bjr-127" parent="mfj3e9-OGvD96PZClYoB-6" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
           <mxGeometry height="10" width="10" x="75" y="258.2608695652174" as="geometry" />
+        </mxCell>
+        <mxCell id="oI06MmkkO8LOZiLf59vU-1" edge="1" parent="1" source="mfj3e9-OGvD96PZClYoB-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="olPFpjtiA2bztvB_1bjr-3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="mfj3e9-OGvD96PZClYoB-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="valid" vertex="1">
           <mxGeometry height="40" width="80" x="200" y="120" as="geometry" />
