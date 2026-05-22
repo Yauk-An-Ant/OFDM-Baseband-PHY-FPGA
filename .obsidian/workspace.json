@@ -185,6 +185,9 @@
   },
   "active": "1156b56dea705ff1",
   "lastOpenFiles": [
+    "diagrams/constellationplot.png",
+    "diagrams/bitplot.png",
+    "modeling/quantization_noise_analysis.png",
     "diagrams/Unconfirmed 193617.crdownload",
     "diagrams/Unconfirmed 938512.crdownload",
     "diagrams/Unconfirmed 675910.crdownload",
@@ -198,7 +201,6 @@
     "diagrams/Unconfirmed 255394.crdownload",
     "diagrams/Unconfirmed 243766.crdownload",
     "diagrams/Unconfirmed 316372.crdownload",
-    "diagrams/Unconfirmed 810955.crdownload",
     "diagrams/cyclicprefixrtl.png",
     "diagrams/qpskdemapperrtl.png",
     "diagrams/receivercorertl.png",

@@ -29,8 +29,11 @@ To optimize hardware resource utilization while still retaining the precision ne
 | QPSK Demapper Input Format | Q1.15                |
 | IFFT Output Format         | Q6.10                |
 | FFT Input Format           | Q6.10                |
+### 2.2 Fractional Bit Width vs. Quantization Noise Plot
 
-### 2.2 Signal Scaling & Headroom Analysis
+![](/diagrams/bitplot.png)
+
+### 2.3 Signal Scaling & Headroom Analysis
 
 **Mapper Normalization:** To prevent mathematical overflow inside the IFFT butterfly calculation stages, input QPSK symbols are scaled down by a factor of $1/\sqrt{2} \approx 0.707$. The coordinates are mapped to the signed integers `+23170` (`16'h5A82`) and `-23170` (`16'hA57E`).
 
@@ -209,3 +212,11 @@ To emulate a real world RF channel with noise, an extra module is used for verif
 | Prefix Insertion   | Cyclic Prefix Insertion | TRIM = 0<br>64 sample stream | 80 sample stream starting with the last 16 samples           |
 | Prefix Trimming    | Cyclic Prefix Trimming  | TRIM = 1<br>80 sample stream | 64 sample stream with the 16 sample cyclic prefix discarded  |
 ## 6. Results
+### 6.1 Python Model
+
+#### 6.1.1 Model Description
+
+First, a complete, end-to-end software simulation model was constructed in Python. This behavioral model serves as the mathematical "golden reference" for the entire OFDM communication transceiver pipeline, simulating a realistic physical layer link over an impaired channel. The model randomly generates bit pairs mapped to QPSK symbols as inputs to the transmitter and goes through the mathematical processes of the transmitter core. Then, Additive White Gaussian Noise (AWGN) is injected into the channel by adding it to the transmitter output. These noisy outputs are then put through the receiver model that plots the frequency domain outputs on a constellation plot shown below. With low and moderate amounts of noise, the BER is calculated to be 0. At elevated noise levels, the BER scales predictably higher, aligning precisely with the expected theoretical waterfall curve characteristics of a classic AWGN channel.
+#### 6.1.2 Constellation Plot
+
+![](/diagrams/constellationplot.png)

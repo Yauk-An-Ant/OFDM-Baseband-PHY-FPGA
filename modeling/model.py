@@ -72,5 +72,7 @@ print(f"BER: {total_errors / len(bits)}")
 # Plot all 640 received subcarrier points
 plt.scatter(np.real(all_rx_fxp), np.imag(all_rx_fxp), color='cyan', s=10, alpha=0.7)
 plt.title(f"Received QPSK Constellation ({num_symbols} OFDM Symbols)")
+plt.xlabel('In-Phase (I)', fontsize=11, fontweight='bold')
+plt.ylabel('Quadrature (Q)', fontsize=11, fontweight='bold')
 plt.grid(True, alpha=0.3)
 plt.show()
