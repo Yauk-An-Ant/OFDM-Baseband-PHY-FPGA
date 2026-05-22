@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_qpsk_mapper_behav/xsimk -simmode gui -wdb tb_qpsk_mapper_behav.wdb -simrunnum 0 -socket 58197
+Design successfully loaded
+Design Loading Memory Usage: 196336 KB (Peak: 196392 KB)
+Design Loading CPU Usage: 740 ms
+Simulation completed
+Simulation Memory Usage: 287044 KB (Peak: 335604 KB)
+Simulation CPU Usage: 740 ms

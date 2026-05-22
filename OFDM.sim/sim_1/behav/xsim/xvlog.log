@@ -1,4 +1,4 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/achary/achary/Projects/OFDM/src/top.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module top
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/achary/achary/Projects/OFDM/tb/tb_top.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/achary/achary/Projects/OFDM/src/qpsk_mapper.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module qpsk_mapper
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/achary/achary/Projects/OFDM/testbench/tb_qpsk_mapper.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_qpsk_mapper

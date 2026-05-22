@@ -2,6 +2,7 @@
 2020.2
 Nov 14 2025
 12:36:23
-/home/achary/achary/Projects/OFDM/OFDM.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,uvm,,,,,,
+/home/achary/achary/Projects/OFDM/OFDM.sim/sim_1/behav/xsim/glbl.v,1778472536,verilog,,,,glbl,,uvm,,,,,,
+/home/achary/achary/Projects/OFDM/src/qpsk_mapper.sv,1779476178,systemVerilog,,/home/achary/achary/Projects/OFDM/testbench/tb_qpsk_mapper.sv,,qpsk_mapper,,uvm,../../../../../../../../../opt/Xilinx/2025.2/data/rsb/busdef,,,,,
 /home/achary/achary/Projects/OFDM/src/top.sv,1778462418,systemVerilog,,/home/achary/achary/Projects/OFDM/tb/tb_top.sv,,top,,uvm,../../../../../../../../../opt/Xilinx/2025.2/data/rsb/busdef,,,,,
-/home/achary/achary/Projects/OFDM/tb/tb_top.sv,1778468273,systemVerilog,,,,tb_top,,uvm,../../../../../../../../../opt/Xilinx/2025.2/data/rsb/busdef,,,,,
+/home/achary/achary/Projects/OFDM/testbench/tb_qpsk_mapper.sv,1779476091,systemVerilog,,,,tb_qpsk_mapper,,uvm,../../../../../../../../../opt/Xilinx/2025.2/data/rsb/busdef,,,,,

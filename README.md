@@ -76,8 +76,9 @@ This module fully encapsulates the transmission baseband pipeline, handling the 
 | clk       | Input     | 1     | System clock                                 |
 | n_rst     | Input     | 1     | Global active-low asynchronous reset         |
 | serial_in | Input     | 1     | Serial bit input stream (2 bit symbol)       |
+| valid_in  | Input     | 1     | Indicates valid input data                   |
 | out_i     | Output    | 16    | Real component amplitude ($Q6.10$ format)    |
-| out_q     | Output    | 16    | Complex component amplitude ($Q6.10$ format) 
+| out_q     | Output    | 16    | Complex component amplitude ($Q6.10$ format) |
 ### 4.2 Receiver Top Level Core (```ofdm_rx.sv```)
 #### 4.2.1 Module Description
 This module fully encapsulates the reception baseband pipeline, handling the transition from a time-domain complex waveform into frequency-domain soft metrics. It accepts a continuous input stream of complex time-domain samples in `Q6.10` format from an external channel or ADC interface. The Cyclic Prefix Handler strips the 16-sample prefix, routing the 64-sample frames to the FFT core to demodulate the subcarriers back to the frequency domain. Finally, the normalized frequency-domain values (`Q1.15`) are processed by the soft-decision QPSK Demapper, which extracts and serializes a continuous stream of 4-bit Log-Likelihood Ratios (LLRs) for downstream error-correction units.
