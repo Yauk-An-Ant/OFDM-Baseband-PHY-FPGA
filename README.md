@@ -88,6 +88,7 @@ This module fully encapsulates the reception baseband pipeline, handling the tra
 | --------- | --------- | ----- | -------------------------------------------------------------------- |
 | clk       | Input     | 1     | System clock                                                         |
 | n_rst     | Input     | 1     | Global active-low asynchronous reset                                 |
+| valid_in  | Input     | 1     | Indicates valid input data                                           |
 | in_i      | Input     | 16    | Real time-domain component from channel/ADC ($Q6.10$ format)         |
 | in_q      | Input     | 16    | Complex time-domain component from channel/ADC      ($Q6.10$ format) |
 | llr_out   | Output    | 4     | 4-bit Signed Log-Likelihood Ratio stream                             |
