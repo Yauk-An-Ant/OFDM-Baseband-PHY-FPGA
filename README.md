@@ -54,6 +54,8 @@ The system operates on a Synchronous Continuous Stream Architecture. Sub-modules
 ![](/diagrams/qpskdemapperrtl.png)
 ### 3.5 FFT Core RTL Diagram
 
+![](/diagrams/fft.png)
+![](/diagrams/compblock.png)
 
 ### 3.6 Cyclic Prefix Handler RTL Diagram
 
@@ -126,7 +128,7 @@ The FFT Core is a parameterized Fast Fourier Transform Acceleration block that t
 | valid     | Input     | 1     | Indicates that the input data is valid                          |
 | in_i      | Input     | 16    | Real input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)     |
 | in_q      | Input     | 16    | Complex input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)  |
-| done      | Output    | 1     | Signals that the FFT/IFFT computation is finished               |
+| valid_out | Output    | 1     | Signals that the FFT/IFFT computation is finished               |
 | out_i     | Output    | 16    | Real output sample stream ($Q1.15$ if FFT, $Q6.10$  if IFFT)    |
 | out_q     | Output    | 16    | Complex output sample stream ($Q1.15$ if FFT, $Q6.10$  if IFFT) |
 ### 4.6 Cyclic Prefix Handler (```cyclic_prefix_handler.sv```)
