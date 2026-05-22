@@ -1,7 +1,7 @@
-*/OFDM.cache
-*/OFDM.hw
-*/OFDM.sim
-*/OFDM.runs
-*/OFDM.srcs
-*/OFDM.ip_user_files
-*/.obsidian
+*OFDM.cache
+*OFDM.hw
+*OFDM.sim
+*OFDM.runs
+*OFDM.srcs
+*OFDM.ip_user_files
+*.obsidian
