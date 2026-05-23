@@ -222,3 +222,5 @@ First, a complete, end-to-end software simulation model was constructed in Pytho
 #### 6.1.2 Constellation Plot
 
 ![](/diagrams/constellationplot.png)
+
+
