@@ -25,7 +25,7 @@
             <mxPoint x="510" y="183" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="J6cfG6GmxILjLDQb_3p_-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="2-bit STP SR&lt;div&gt;out = {out[1], serial_in}&lt;/div&gt;" vertex="1">
+        <mxCell id="J6cfG6GmxILjLDQb_3p_-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="2-bit STP SR&lt;div&gt;out = {out[0], serial_in}&lt;/div&gt;" vertex="1">
           <mxGeometry height="120" width="120" x="190" y="240" as="geometry" />
         </mxCell>
         <mxCell id="J6cfG6GmxILjLDQb_3p_-7" edge="1" parent="1" source="J6cfG6GmxILjLDQb_3p_-4" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;labelBackgroundColor=default;startSize=8;endArrow=classic;endSize=8;" target="J6cfG6GmxILjLDQb_3p_-6">
