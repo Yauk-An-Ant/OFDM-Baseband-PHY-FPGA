@@ -185,10 +185,10 @@ To emulate a real world RF channel with noise, an extra module is used for verif
 | ------------------ | --------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
 | Asynchronous Reset | Asynchronous reset                | n_rst = 0                                                | All registers should reset to their correct reset values       |
 | Bit mapping        | Correct mapping and normalization | Serial stream of all possible bit pairs (00, 01, 10, 11) | Bits should be correctly mapped to 0.707 with the correct sign |
+|                    |                                   |                                                          |                                                                |
 ### 5.4 QPSK Demapper Verification
 | Testcase Name            | Feature Tested                    | Inputs                                                                 | Expected Outputs                                                                                     |
 | ------------------------ | --------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Asynchronous Reset       | Asynchronous reset                | n_rst = 0                                                              | All registers should reset to their correct reset values<br>                                         |
 | Noiseless Demapping      | Demapping of ideal inputs         | Stream of all possible input pairs ($\pm0.707$)                        | LLRs should be at maximum magnitudes and demap into the correct bits                                 |
 | Moderate Noise Demapping | Demapping of different magnitudes | Stream of inputs at different magnitudes between $\pm0.2$ and $\pm0.6$ | LLRs should show that there is some noise, but still correctly identify bits                         |
 | Heavy Noise Demapping    | Demapping of high noise inputs    | Stream of inputs with low magnitudes close to 0                        | LLRs should show that the inputs have a lot of noise and identify which bit they are closer to being |
