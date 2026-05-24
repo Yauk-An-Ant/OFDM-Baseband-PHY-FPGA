@@ -208,11 +208,13 @@ To emulate a real world RF channel with noise, an extra module is used for verif
 | Flat Spectrum            | All-Pass Characteristic             | Flat spectrum of uniform, non-zero value                            | Output should be a single spike at sample 0                                                           |
 ### Cyclic Prefix Verification
 
-| Testcase Name      | Feature Tested          | Inputs                       | Expected Outputs                                             |
-| ------------------ | ----------------------- | ---------------------------- | ------------------------------------------------------------ |
-| Asynchronous Reset | Asynchronous reset      | n_rst = 0                    | All registers should reset to their correct reset values<br> |
-| Prefix Insertion   | Cyclic Prefix Insertion | TRIM = 0<br>64 sample stream | 80 sample stream starting with the last 16 samples           |
-| Prefix Trimming    | Cyclic Prefix Trimming  | TRIM = 1<br>80 sample stream | 64 sample stream with the 16 sample cyclic prefix discarded  |
+| Testcase Name                 | Feature Tested                                         | Inputs                          | Expected Outputs                                                                                                               |
+| ----------------------------- | ------------------------------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Asynchronous Reset            | Asynchronous reset                                     | n_rst = 0                       | All registers should reset to their correct reset values<br>                                                                   |
+| Prefix Insertion              | Cyclic Prefix Insertion                                | TRIM = 0<br>64 sample stream    | 80 sample stream starting with the last 16 samples                                                                             |
+| Prefix Trimming               | Cyclic Prefix Trimming                                 | TRIM = 1<br>80 sample stream    | 64 sample stream with the 16 sample cyclic prefix discarded                                                                    |
+| Multi-Symbol Prefix Insertion | Cyclic Prefix Insertion with Multiple Symbols in a Row | TRIM = 0<br>3 64 sample streams | 64 sample stream starting with the last 16 samples for each of the three symbols with no data loss or extra breaks             |
+| Multi-Symbol Prefix Trimming  | Cyclic Prefix Trimming with Multiple Symbols in a Row  | TRIM = 1<br>3 80 sample streams | 80 sample stream with the 16 sample cyclic prefix discarded for each, valid goes high only when transmitting the symbol itself |
 ## 6. Results
 ### 6.1 Python Model
 

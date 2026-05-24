@@ -33,6 +33,13 @@ always_ff @(posedge clk, negedge n_rst) begin
         write_sel <= 2'b0;
         read_sel <= 2'b0;
         sample_count <= 6'b0;
+
+        i_regA <= '0;
+        q_regA <= '0;
+        i_regB <= '0;
+        q_regB <= '0;
+        i_regC <= '0;
+        q_regC <= '0;
     end else begin 
         valid_symbol <= next_valid_symbol;
         out_i <= next_out_i;
