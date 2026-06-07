@@ -130,7 +130,7 @@ The FFT Core is a parameterized Fast Fourier Transform Acceleration block that t
 | --------- | --------- | ----- | --------------------------------------------------------------- |
 | clk       | Input     | 1     | System clock                                                    |
 | n_rst     | Input     | 1     | Global active-low reset                                         |
-| valid     | Input     | 1     | Indicates that the input data is valid                          |
+| valid_in  | Input     | 1     | Indicates that the input data is valid                          |
 | in_i      | Input     | 16    | Real input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)     |
 | in_q      | Input     | 16    | Complex input sample stream ($Q6.10$ if FFT, $Q1.15$  if IFFT)  |
 | valid_out | Output    | 1     | Signals that the FFT/IFFT computation is finished               |
@@ -157,19 +157,9 @@ The cyclic prefix handler is a parameterized module that can both insert a cycli
 | out_q        | Output    | 16    | Complex output sample stream                                                           |
 ## 5. Verification Strategy
 
-### 5.1 Noise Module Specification
+### 5.1 Noise Injection
 
-To emulate a real world RF channel with noise, an extra module is used for verification of transmission and retrieval. This module ```noise.sv``` acts as a manual noise injection device, which adds pseudo-random noise to both the $I$ and $Q$ parameters. This module is placed in between the transmitter and receiver cores to test end-to-end behavior. Its portmap is defined below.
-
-| Port Name   | Direction | Width | Description                                                |
-| ----------- | --------- | ----- | ---------------------------------------------------------- |
-| clk         | Input     | 1     | System clock                                               |
-| n_rst       | Input     | 1     | Global active-low asynchronous reset                       |
-| noise_level | Input     | 4     | Amount of noise                                            |
-| in_i        | Input     | 16    | Real time-domain component from transmitter core           |
-| in_q        | Input     | 16    | Complex time-domain component from transmitter core        |
-| out_i       | Output    | 16    | Noisy real time-domain component going to receiver core    |
-| out_q       | Output    | 16    | Noisy complex time-domain component going to receiver core |
+The outputs from the transmitter are written to a text file, which is then read by a python script that injects Additive White Gaussian Noise (AWGN) and writes to a second text file that is used as input for the receiver. to emulate a real world noisy RF channel.
 ### 5.2 Top Level Verification
 
 | Testcase Name       | Feature Tested                             | Inputs                                                                                                  | Expected Outputs                                                                                                       |
@@ -194,18 +184,20 @@ To emulate a real world RF channel with noise, an extra module is used for verif
 | Heavy Noise Demapping    | Demapping of high noise inputs    | Stream of inputs with low magnitudes close to 0                        | LLRs should show that the inputs have a lot of noise and identify which bit they are closer to being |
 ### 5.5 FFT Core Verification
 
-| Testcase Name            | Feature Tested                      | Inputs                                                              | Expected Outputs                                                                                      |
-| ------------------------ | ----------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Asynchronous Reset       | Asynchronous reset                  | n_rst = 0                                                           | All registers should reset to their correct reset values<br>                                          |
-| Constant Value           | DC isolation                        | Constant maximum value for 64 samples                               | Spike in first bin, then all 0s for remaining 63                                                      |
-| All Zeroes               | Idle Stability                      | Input is 0 for all samples                                          | Output should be 0 without any self induced oscillation                                               |
-| Single Frequency         | Sine wave fourier transform         | Sine wave input of four cycles across the 64 samples                | Bins corresponding to $\pm4$ should have non-zero values, with minimal leakage into surrounding bins  |
-| Single Frequency Inverse | Sine wave inverse fourier transform | Feed expected output of previous test case as input to inverse mode | Sine wave of four cycles across the 64 samples                                                        |
-| Overflow Prevention      | Overflow Prevention                 | Alternating maximum and minimum values                              | Output data should be concentrated in the center bin without clipping or rollovers                    |
-| Linear Superposition     | Multi-Frequency Inputs              | A 2 cycle sine wave added to an 8 cycle sine wave                   | Two distinct magnitude spikes in bins 2 and 8 respectively with minimal leakage into surrounding bins |
-| Linear Superposition     | Multi-Frequency Inputs              | Two distinct magnitude spikes in bins 2 and 8 respectively          | A 2 cycle sine wave added to an 8 cycle sine wave                                                     |
-| Single Spike             | All-Pass Characteristic             | Single magnitude spike at sample 0, all other samples at 0          | Output should be a flat frequency spectrum of uniform, non-zero value                                 |
-| Flat Spectrum            | All-Pass Characteristic             | Flat spectrum of uniform, non-zero value                            | Output should be a single spike at sample 0                                                           |
+| Testcase Name                        | Feature Tested                                | Inputs                                                                                        | Expected Outputs                                                                                      |
+| ------------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Asynchronous Reset                   | Asynchronous reset                            | n_rst = 0                                                                                     | All registers should reset to their correct reset values<br>                                          |
+| Constant Value/Interrupted Streaming | DC isolation/Interrupted Streaming            | Constant maximum value for 64 samples once every two cycles (valid_in pulled down in between) | Spike in first bin, then all 0s for remaining 63                                                      |
+| All Zeroes                           | Idle Stability                                | Input is 0 for all samples                                                                    | Output should be 0 without any self induced oscillation                                               |
+| Single Frequency                     | Sine wave fourier transform                   | Sine wave input of four cycles across the 64 samples                                          | Bins corresponding to $\pm4$ should have non-zero values, with minimal leakage into surrounding bins  |
+| Single Phasor                        | Complex exponential fourier transform         | cos + jsin input of four cycles across the 64 samples                                         | Bin corresponding to $4$ should have non-zero value, with minimal leakage into surrounding bins       |
+| Single Frequency Inverse             | Sine wave inverse fourier transform           | Feed expected output of single frequency test as input to inverse mode                        | Sine wave of four cycles across the 64 samples                                                        |
+| Single Phasor Inverse                | Complex exponential inverse fourier transform | Feed expected output of single phasor test as input to inverse mode                           | cos + jsin of four cycles across the 64 samples                                                       |
+| Overflow Prevention                  | Overflow Prevention                           | Alternating maximum and minimum values                                                        | Output data should be concentrated in the center bin without clipping or rollovers                    |
+| Linear Superposition                 | Multi-Frequency Inputs                        | A 2 cycle sine wave added to an 8 cycle sine wave                                             | Two distinct magnitude spikes in bins 2 and 8 respectively with minimal leakage into surrounding bins |
+| Linear Superposition                 | Multi-Frequency Inputs                        | Two distinct magnitude spikes in bins 2 and 8 respectively                                    | A 2 cycle sine wave added to an 8 cycle sine wave                                                     |
+| Single Spike                         | All-Pass Characteristic                       | Single magnitude spike at sample 0, all other samples at 0                                    | Output should be a flat frequency spectrum of uniform, non-zero value                                 |
+| Flat Spectrum/Interrupted Streaming  | All-Pass Characteristic                       | Flat spectrum of uniform, non-zero value once every 2 cycles (valid_in pulled low in between) | Output should be a single spike at sample 0                                                           |
 ### Cyclic Prefix Verification
 
 | Testcase Name                 | Feature Tested                                         | Inputs                          | Expected Outputs                                                                                                               |
