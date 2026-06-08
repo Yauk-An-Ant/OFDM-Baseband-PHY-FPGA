@@ -3,71 +3,139 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_prefix_inserter_behav.wdb" id="1">
+      <db_ref path="tb_fft_64_core_forward_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
-            <top_module name="tb_prefix_inserter" />
+            <top_module name="tb_fft_64_core_forward" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,482.140 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,633.741 ns"></ZoomEndTime>
-      <Cursor1Time time="11,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="2,267.505 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,435.706 ns"></ZoomEndTime>
+      <Cursor1Time time="2,374.305 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="108"></NameColumnWidth>
-      <ValueColumnWidth column_width="123"></ValueColumnWidth>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="65"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="2" />
    <wvobject type="group" fp_name="group62">
       <obj_property name="label">Inputs</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/tb_prefix_inserter/clk">
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/clk">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_prefix_inserter/n_rst">
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/in_i">
+         <obj_property name="ElementShortName">in_i[15:0]</obj_property>
+         <obj_property name="ObjectShortName">in_i[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/in_q">
+         <obj_property name="ElementShortName">in_q[15:0]</obj_property>
+         <obj_property name="ObjectShortName">in_q[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/n_rst">
          <obj_property name="ElementShortName">n_rst</obj_property>
          <obj_property name="ObjectShortName">n_rst</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_prefix_inserter/valid_data">
-         <obj_property name="ElementShortName">valid_data</obj_property>
-         <obj_property name="ObjectShortName">valid_data</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_prefix_inserter/valid_symbol">
-         <obj_property name="ElementShortName">valid_symbol</obj_property>
-         <obj_property name="ObjectShortName">valid_symbol</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/tb_prefix_inserter/in_i">
-         <obj_property name="ElementShortName">in_i[15:0]</obj_property>
-         <obj_property name="ObjectShortName">in_i[15:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/tb_prefix_inserter/in_q">
-         <obj_property name="ElementShortName">in_q[15:0]</obj_property>
-         <obj_property name="ObjectShortName">in_q[15:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/valid_in">
+         <obj_property name="ElementShortName">valid_in</obj_property>
+         <obj_property name="ObjectShortName">valid_in</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group63">
       <obj_property name="label">Outputs</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/tb_prefix_inserter/out_i">
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/valid_out">
+         <obj_property name="ElementShortName">valid_out</obj_property>
+         <obj_property name="ObjectShortName">valid_out</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/out_i">
          <obj_property name="ElementShortName">out_i[15:0]</obj_property>
          <obj_property name="ObjectShortName">out_i[15:0]</obj_property>
-         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/tb_prefix_inserter/out_q">
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/out_q">
          <obj_property name="ElementShortName">out_q[15:0]</obj_property>
          <obj_property name="ObjectShortName">out_q[15:0]</obj_property>
-         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage5_q">
+         <obj_property name="ElementShortName">stage5_q[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage5_q[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage5_i">
+         <obj_property name="ElementShortName">stage5_i[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage5_i[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage4_q">
+         <obj_property name="ElementShortName">stage4_q[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage4_q[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage4_i">
+         <obj_property name="ElementShortName">stage4_i[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage4_i[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage3_q">
+         <obj_property name="ElementShortName">stage3_q[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage3_q[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage3_i">
+         <obj_property name="ElementShortName">stage3_i[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage3_i[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_q">
+         <obj_property name="ElementShortName">stage2_q[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage2_q[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_i">
+         <obj_property name="ElementShortName">stage2_i[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage2_i[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage1_q">
+         <obj_property name="ElementShortName">stage1_q[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage1_q[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage1_i">
+         <obj_property name="ElementShortName">stage1_i[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage1_i[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage6_en">
+         <obj_property name="ElementShortName">stage6_en</obj_property>
+         <obj_property name="ObjectShortName">stage6_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage5_en">
+         <obj_property name="ElementShortName">stage5_en</obj_property>
+         <obj_property name="ObjectShortName">stage5_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage4_en">
+         <obj_property name="ElementShortName">stage4_en</obj_property>
+         <obj_property name="ObjectShortName">stage4_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage3_en">
+         <obj_property name="ElementShortName">stage3_en</obj_property>
+         <obj_property name="ObjectShortName">stage3_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_en">
+         <obj_property name="ElementShortName">stage2_en</obj_property>
+         <obj_property name="ObjectShortName">stage2_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage1_en">
+         <obj_property name="ElementShortName">stage1_en</obj_property>
+         <obj_property name="ObjectShortName">stage1_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_top_index">
+         <obj_property name="ElementShortName">stage2_top_index[5:0]</obj_property>
+         <obj_property name="ObjectShortName">stage2_top_index[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_bottom_index">
+         <obj_property name="ElementShortName">stage2_bottom_index[5:0]</obj_property>
+         <obj_property name="ObjectShortName">stage2_bottom_index[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_counter/count_out">
+         <obj_property name="ElementShortName">count_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">count_out[4:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

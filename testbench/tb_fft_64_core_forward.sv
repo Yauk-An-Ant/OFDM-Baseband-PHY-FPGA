@@ -28,7 +28,7 @@ begin
 end
 endtask
 
-task automatic stream_frame_from_file(
+task stream_frame_from_file(
     input logic twocycle, 
     input string real_file,
     input string imag_file
@@ -80,25 +80,25 @@ initial begin
     reset_dut();
 
     testname = "All Zeroes";
-    stream_frame_from_file(1'b0, "testdata/fft_test_zeroes_real.txt", "testdata/fft_test_zeroes_imag.txt");
+    stream_frame_from_file(1'b0, "/home/achary/achary/Projects/OFDM/testdata/fft_test_zeroes_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_zeroes_imag.txt");
         
     testname = "Constant Value/Interrupted Streaming";
-    stream_frame_from_file(1'b1, "testdata/fft_test_dc_real.txt", "testdata/fft_test_dc_imag.txt");
+    stream_frame_from_file(1'b1, "/home/achary/achary/Projects/OFDM/testdata/fft_test_dc_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_dc_imag.txt");
     
     testname = "Single Frequency";
-    stream_frame_from_file(1'b0, "testdata/fft_test_sine_real.txt", "testdata/fft_test_sine_imag.txt");
+    stream_frame_from_file(1'b0, "/home/achary/achary/Projects/OFDM/testdata/fft_test_sine_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_sine_imag.txt");
     
     testname = "Single Phasor";
-    stream_frame_from_file(1'b0, "testdata/fft_test_phasor_real.txt", "testdata/fft_test_phasor_imag.txt");
+    stream_frame_from_file(1'b0, "/home/achary/achary/Projects/OFDM/testdata/fft_test_phasor_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_phasor_imag.txt");
     
     testname = "Overflow Prevention";
-    stream_frame_from_file(1'b0, "testdata/fft_test_overflow_real.txt", "testdata/fft_test_overflow_imag.txt");
+    stream_frame_from_file(1'b0, "/home/achary/achary/Projects/OFDM/testdata/fft_test_overflow_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_overflow_imag.txt");
     
     testname = "Linear Superposition";
-    stream_frame_from_file(1'b0, "testdata/fft_test_superposition_real.txt", "testdata/fft_test_superposition_imag.txt");
+    stream_frame_from_file(1'b0, "/home/achary/achary/Projects/OFDM/testdata/fft_test_superposition_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_superposition_imag.txt");
     
     testname = "Single Spike";
-    stream_frame_from_file(1'b0, "testdata/fft_test_spike_real.txt", "testdata/fft_test_spike_imag.txt");
+    stream_frame_from_file(1'b0, "/home/achary/achary/Projects/OFDM/testdata/fft_test_spike_real.txt", "/home/achary/achary/Projects/OFDM/testdata/fft_test_spike_imag.txt");
     $finish;
 end
 endmodule

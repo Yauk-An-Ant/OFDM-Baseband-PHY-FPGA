@@ -36,9 +36,10 @@ task automatic stream_frame_from_file(
 begin
     integer file_real, file_imag;
     integer status_real, status_imag;
+    integer i;
 
     file_real = $fopen(real_file, "r");
-    file_imag = $fopen{real_imag, "r"};
+    file_imag = $fopen(imag_file, "r");
 
     if(!file_real || !file_imag) begin
         $display("ERROR: Could not open files.");
@@ -55,7 +56,7 @@ begin
         @(negedge clk);
     end
 
-    valid = 1'b0;
+    valid_in = 1'b0;
     in_i = 16'h0000;
     in_q = 16'h0000;
 
@@ -67,7 +68,7 @@ endtask
 
 initial begin
     in_i = 16'h0000;
-    in_1 = 16'h0000;
+    in_q = 16'h0000;
     valid_in = 1'b0;
 
     testname = "Asynchronous Reset";
@@ -82,11 +83,10 @@ initial begin
     testname = "Linear Superposition Inverse";
     stream_frame_from_file(1'b0, "testdata/ifft_test_superposition_real.txt", "testdata/ifft_test_superposition_imag.txt");
     
-    testname = "Flat Spectrum/Interrupted Streaming"
+    testname = "Flat Spectrum/Interrupted Streaming";
     stream_frame_from_file(1'b1, "testdata/ifft_test_flat_real.txt", "testdata/ifft_test_flat_imag.txt");
 
     stream_frame_from_file(1'b0, "testdata/fft_test_zeroes_real.txt", "testdata/fft_test_zeroes_imag.txt");
     stream_frame_from_file(1'b0, "testdata/fft_test_zeroes_real.txt", "testdata/fft_test_zeroes_imag.txt");
 end
-$finish;
 endmodule

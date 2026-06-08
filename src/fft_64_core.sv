@@ -1,5 +1,5 @@
 module fft_64_core #(
-    parameter INVERSE
+    parameter INVERSE = 1'b0
 )(
     input logic clk, n_rst, valid_in,
     input logic [15:0] in_i, in_q,
@@ -11,7 +11,7 @@ module fft_64_core #(
 logic next_valid_out;
 logic start1, start2, start3, start4, start5, start6;
 logic stage1_en, stage2_en, stage3_en, stage4_en, stage5_en, stage6_en, out_en;
-logic [4:0] stage6_count;
+logic [4:0] stage2_count, stage3_count, stage4_count, stage5_count, stage6_count;
 logic [5:0] count, next_count, out_count, reversed_out_count;
 
 logic [5:0] stage1_top_index, stage1_bottom_index, stage2_top_index, stage2_bottom_index, stage3_top_index, stage3_bottom_index, stage4_top_index, stage4_bottom_index, stage5_top_index, stage5_bottom_index, stage6_top_index, stage6_bottom_index;
@@ -26,19 +26,19 @@ logic [15:0] i6_samp1, i6_samp2, q6_samp1, q6_samp2;
 logic [63:0][15:0] samples_i, samples_q, stage1_i, stage1_q, stage2_i, stage2_q, stage3_i, stage3_q, stage4_i, stage4_q, stage5_i, stage5_q, stage6_i, stage6_q;
 
 //W ROM
-(* ram_style = "distributed" *) logic [31:0][15:0] W_ROM_real, W_ROM_imag;
+(* ram_style = "distributed" *) logic [15:0] W_ROM_real[31:0], W_ROM_imag[31:0];
 
 initial begin
-    $readmemh("W_ROM_real.mem", W_ROM_real);
-    $readmemh("W_ROM_imag.mem", W_ROM_imag);
+    $readmemh("/home/achary/achary/Projects/OFDM/src/W_ROM_real.mem", W_ROM_real);
+    $readmemh("/home/achary/achary/Projects/OFDM/src/W_ROM_imag.mem", W_ROM_imag);
 end
 
 //module defs
 pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage1_counter (.clk(clk), .n_rst(n_rst), .pulse(start1), .counting(stage1_en), .count_out());
-pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage2_counter (.clk(clk), .n_rst(n_rst), .pulse(start2), .counting(stage2_en), .count_out());
-pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage3_counter (.clk(clk), .n_rst(n_rst), .pulse(start3), .counting(stage3_en), .count_out());
-pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage4_counter (.clk(clk), .n_rst(n_rst), .pulse(start4), .counting(stage4_en), .count_out());
-pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage5_counter (.clk(clk), .n_rst(n_rst), .pulse(start5), .counting(stage5_en), .count_out());
+pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage2_counter (.clk(clk), .n_rst(n_rst), .pulse(start2), .counting(stage2_en), .count_out(stage2_count));
+pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage3_counter (.clk(clk), .n_rst(n_rst), .pulse(start3), .counting(stage3_en), .count_out(stage3_count));
+pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage4_counter (.clk(clk), .n_rst(n_rst), .pulse(start4), .counting(stage4_en), .count_out(stage4_count));
+pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage5_counter (.clk(clk), .n_rst(n_rst), .pulse(start5), .counting(stage5_en), .count_out(stage5_count));
 pulse_counter #(.SIZE(3'd5), .COUNTVAL(6'd32)) stage6_counter (.clk(clk), .n_rst(n_rst), .pulse(start6), .counting(stage6_en), .count_out(stage6_count));
 pulse_counter #(.SIZE(3'd6), .COUNTVAL(7'd64)) out_counter (.clk(clk), .n_rst(n_rst), .pulse(out_en), .counting(next_valid_out), .count_out(out_count));
 
@@ -61,7 +61,7 @@ computation_block #(.INVERSE(INVERSE)) stage2_comp (
 computation_block #(.INVERSE(INVERSE)) stage3_comp (
     .A_real(stage2_i[stage3_top_index]), .A_imag(stage2_q[stage3_top_index]),
     .B_real(stage2_i[stage3_bottom_index]), .B_imag(stage2_q[stage3_bottom_index]),
-    .W_real(W_ROM_real[{stage3_top_index[2:0], 2'b00}]), .W_imag(W_ROM_imag[{stage3_top_index[2:0], 2'b00]}),
+    .W_real(W_ROM_real[{stage3_top_index[2:0], 2'b00}]), .W_imag(W_ROM_imag[{stage3_top_index[2:0], 2'b00}]),
     .i_samp1(i3_samp1), .i_samp2(i3_samp2), .q_samp1(q3_samp1), .q_samp2(q3_samp2)
 );
 
@@ -87,7 +87,7 @@ computation_block #(.INVERSE(INVERSE)) stage6_comp (
     .i_samp1(i6_samp1), .i_samp2(i6_samp2), .q_samp1(q6_samp1), .q_samp2(q6_samp2)
 );
 
-always_ff @(posedge clk, posedge n_rst) begin
+always_ff @(posedge clk, negedge n_rst) begin
     if(~n_rst) begin
         out_i <= '0;
         out_q <= '0;
@@ -174,6 +174,7 @@ always_ff @(posedge clk, posedge n_rst) begin
 end
 
 always_comb begin
+    next_count = count;
     start1 = (count == 32);
     start2 = (count == 48);
     start3 = (count == 56);
@@ -196,16 +197,16 @@ always_comb begin
     //index calcs
     stage1_top_index = {1'b0, count[4:0]};
     stage1_bottom_index = count;
-    stage2_top_index = count & 6'b101111;
-    stage2_bottom_index = count | 6'b010000;
-    stage3_top_index = count & 6'b110111;
-    stage3_bottom_index = count | 6'b001000;
-    stage4_top_index = count & 6'b111011;
-    stage4_bottom_index = count | 6'b000100;
-    stage5_top_index = count & 6'b111101;
-    stage5_bottom_index = count | 6'b000010;
-    stage6_top_index = count & 6'b111110;
-    stage6_bottom_index = count | 6'b000001;
+    stage2_top_index = stage2_count & 5'b01111;
+    stage2_bottom_index = stage2_count | 5'b10000;
+    stage3_top_index    = stage3_count & 5'b10111;
+    stage3_bottom_index = stage3_count | 5'b01000;
+    stage4_top_index    = stage4_count & 5'b11011;
+    stage4_bottom_index = stage4_count | 5'b00100;
+    stage5_top_index    = stage5_count & 5'b11101;
+    stage5_bottom_index = stage5_count | 5'b00010;
+    stage6_top_index    = stage6_count & 5'b11110;
+    stage6_bottom_index = stage6_count | 5'b00001;
 end
 
 endmodule

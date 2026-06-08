@@ -1,5 +1,5 @@
 module cyclic_prefix_handler #(
-    parameter TRIM
+    parameter TRIM = 1'b0
 ) (
     input logic clk, n_rst, valid_data,
     input logic [15:0] in_i, in_q,
