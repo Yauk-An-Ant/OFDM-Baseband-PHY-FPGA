@@ -4,7 +4,7 @@ module pulse_counter #(
     parameter SIZE,
     parameter COUNTVAL
 ) (
-    input logic clk, n_rst, pulse,
+    input logic clk, n_rst, pulse, count_en,
     output logic counting,
     output logic [SIZE-1:0] count_out
 );
@@ -29,8 +29,10 @@ always_comb begin
     if(pulse) begin
         next_counting = 1;
         next_count = 0;
-    end else if(counting && count_out < (COUNTVAL - 1)) begin
+    end else if(counting && count_out < (COUNTVAL - 1) && count_en) begin
         next_count = count_out + 1;
+    end else if(counting && count_out <= (COUNTVAL - 1) && ~count_en) begin
+        next_count = count_out;
     end else if(counting) begin
         next_count = 0;
         next_counting = 0;

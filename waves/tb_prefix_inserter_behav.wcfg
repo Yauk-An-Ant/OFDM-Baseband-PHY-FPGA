@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2,267.505 ns"></ZoomStartTime>
-      <ZoomEndTime time="2,435.706 ns"></ZoomEndTime>
-      <Cursor1Time time="2,374.305 ns"></Cursor1Time>
+      <ZoomStartTime time="3,435.431 ns"></ZoomStartTime>
+      <ZoomEndTime time="3,813.932 ns"></ZoomEndTime>
+      <Cursor1Time time="3,557.431 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="158"></NameColumnWidth>
-      <ValueColumnWidth column_width="65"></ValueColumnWidth>
+      <NameColumnWidth column_width="159"></NameColumnWidth>
+      <ValueColumnWidth column_width="226"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="2" />
+   <WVObjectSize size="4" />
    <wvobject type="group" fp_name="group62">
       <obj_property name="label">Inputs</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -61,6 +61,27 @@
          <obj_property name="ElementShortName">out_q[15:0]</obj_property>
          <obj_property name="ObjectShortName">out_q[15:0]</obj_property>
       </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group223">
+      <obj_property name="label">Internals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage6_i_A">
+         <obj_property name="ElementShortName">stage6_i_A[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage6_i_A[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage6_q_A">
+         <obj_property name="ElementShortName">stage6_q_A[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage6_q_A[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage6_i_B">
+         <obj_property name="ElementShortName">stage6_i_B[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage6_i_B[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage6_q_B">
+         <obj_property name="ElementShortName">stage6_q_B[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">stage6_q_B[63:0][15:0]</obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage5_q">
          <obj_property name="ElementShortName">stage5_q[63:0][15:0]</obj_property>
          <obj_property name="ObjectShortName">stage5_q[63:0][15:0]</obj_property>
@@ -101,6 +122,18 @@
          <obj_property name="ElementShortName">stage1_i[63:0][15:0]</obj_property>
          <obj_property name="ObjectShortName">stage1_i[63:0][15:0]</obj_property>
       </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/samples_i">
+         <obj_property name="ElementShortName">samples_i[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">samples_i[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/samples_q">
+         <obj_property name="ElementShortName">samples_q[63:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">samples_q[63:0][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/out_en">
+         <obj_property name="ElementShortName">out_en</obj_property>
+         <obj_property name="ObjectShortName">out_en</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage6_en">
          <obj_property name="ElementShortName">stage6_en</obj_property>
          <obj_property name="ObjectShortName">stage6_en</obj_property>
@@ -125,17 +158,102 @@
          <obj_property name="ElementShortName">stage1_en</obj_property>
          <obj_property name="ObjectShortName">stage1_en</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_top_index">
-         <obj_property name="ElementShortName">stage2_top_index[5:0]</obj_property>
-         <obj_property name="ObjectShortName">stage2_top_index[5:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_bottom_index">
-         <obj_property name="ElementShortName">stage2_bottom_index[5:0]</obj_property>
-         <obj_property name="ObjectShortName">stage2_bottom_index[5:0]</obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_counter/count_out">
          <obj_property name="ElementShortName">count_out[4:0]</obj_property>
          <obj_property name="ObjectShortName">count_out[4:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group224">
+      <obj_property name="label">CompBlock</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/A_real">
+         <obj_property name="ElementShortName">A_real[15:0]</obj_property>
+         <obj_property name="ObjectShortName">A_real[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/A_imag">
+         <obj_property name="ElementShortName">A_imag[15:0]</obj_property>
+         <obj_property name="ObjectShortName">A_imag[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/B_real">
+         <obj_property name="ElementShortName">B_real[15:0]</obj_property>
+         <obj_property name="ObjectShortName">B_real[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/B_imag">
+         <obj_property name="ElementShortName">B_imag[15:0]</obj_property>
+         <obj_property name="ObjectShortName">B_imag[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/W_real">
+         <obj_property name="ElementShortName">W_real[15:0]</obj_property>
+         <obj_property name="ObjectShortName">W_real[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/W_imag">
+         <obj_property name="ElementShortName">W_imag[15:0]</obj_property>
+         <obj_property name="ObjectShortName">W_imag[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/i_samp1">
+         <obj_property name="ElementShortName">i_samp1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">i_samp1[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/q_samp1">
+         <obj_property name="ElementShortName">q_samp1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">q_samp1[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/i_samp2">
+         <obj_property name="ElementShortName">i_samp2[15:0]</obj_property>
+         <obj_property name="ObjectShortName">i_samp2[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/q_samp2">
+         <obj_property name="ElementShortName">q_samp2[15:0]</obj_property>
+         <obj_property name="ObjectShortName">q_samp2[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/real_term">
+         <obj_property name="ElementShortName">real_term[16:0]</obj_property>
+         <obj_property name="ObjectShortName">real_term[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/imag_term">
+         <obj_property name="ElementShortName">imag_term[16:0]</obj_property>
+         <obj_property name="ObjectShortName">imag_term[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/unslice_i1">
+         <obj_property name="ElementShortName">unslice_i1[16:0]</obj_property>
+         <obj_property name="ObjectShortName">unslice_i1[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/unslice_q1">
+         <obj_property name="ElementShortName">unslice_q1[16:0]</obj_property>
+         <obj_property name="ObjectShortName">unslice_q1[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/i1">
+         <obj_property name="ElementShortName">i1[32:0]</obj_property>
+         <obj_property name="ObjectShortName">i1[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/i2">
+         <obj_property name="ElementShortName">i2[32:0]</obj_property>
+         <obj_property name="ObjectShortName">i2[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/q1">
+         <obj_property name="ElementShortName">q1[32:0]</obj_property>
+         <obj_property name="ObjectShortName">q1[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/q2">
+         <obj_property name="ElementShortName">q2[32:0]</obj_property>
+         <obj_property name="ObjectShortName">q2[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/samp2_iadd">
+         <obj_property name="ElementShortName">samp2_iadd[32:0]</obj_property>
+         <obj_property name="ObjectShortName">samp2_iadd[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/samp2_qadd">
+         <obj_property name="ElementShortName">samp2_qadd[32:0]</obj_property>
+         <obj_property name="ObjectShortName">samp2_qadd[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/samp2_isub">
+         <obj_property name="ElementShortName">samp2_isub[32:0]</obj_property>
+         <obj_property name="ObjectShortName">samp2_isub[32:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fft_64_core_forward/DUT/DUT/stage2_comp/samp2_qsub">
+         <obj_property name="ElementShortName">samp2_qsub[32:0]</obj_property>
+         <obj_property name="ObjectShortName">samp2_qsub[32:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
