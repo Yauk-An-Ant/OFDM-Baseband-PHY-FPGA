@@ -206,12 +206,12 @@ always_comb begin
     out_en = 0;
 
     next_count = count;
-    start1 = (count == 32);
-    start2 = (stage1_count == 16);
-    start3 = (stage2_count == 8);
-    start4 = (stage3_count == 4);
-    start5 = (stage4_count == 2);
-    start6 = (stage5_count == 1);
+    start1 = (count == 33);
+    start2 = (stage1_count == 17);
+    start3 = (stage2_count == 9);
+    start4 = (stage3_count == 5);
+    start5 = (stage4_count == 3);
+    start6 = (stage5_count == 2);
 
     if(stage6_count == 31) begin
         out_en = 1;
@@ -235,15 +235,15 @@ always_comb begin
     //index calcs
     stage1_top_index = stage1_count;
     stage1_bottom_index = {1'b1, stage1_count};
-    stage2_top_index = stage2_count & 5'b01111;
+    stage2_top_index = (stage2_count & 5'b01111);
     stage2_bottom_index = stage2_count | 5'b10000;
-    stage3_top_index    = stage3_count & 5'b10111;
+    stage3_top_index    = (stage3_count & 5'b10111);
     stage3_bottom_index = stage3_count | 5'b01000;
-    stage4_top_index    = stage4_count & 5'b11011;
+    stage4_top_index    = (stage4_count & 5'b11011);
     stage4_bottom_index = stage4_count | 5'b00100;
-    stage5_top_index    = stage5_count & 5'b11101;
+    stage5_top_index    = (stage5_count & 5'b11101);
     stage5_bottom_index = stage5_count | 5'b00010;
-    stage6_top_index    = stage6_count & 5'b11110;
+    stage6_top_index    = (stage6_count & 5'b11110);
     stage6_bottom_index = stage6_count | 5'b00001;
 
     count2_en = stage2_count < 16 ? valid_in : 1'b1;

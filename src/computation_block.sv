@@ -29,8 +29,8 @@ always_comb begin
     samp2_isub = i1 - i2;
     samp2_qadd = q1 + q2;
     samp2_qsub = q1 - q2;
-    i_samp2 = INVERSE ? samp2_iadd[29:14] : samp2_isub[29:14];
-    q_samp2 = INVERSE ? samp2_qsub[29:14] : samp2_qadd[29:14];
+    i_samp2 = INVERSE ? samp2_iadd[30:15] : samp2_isub[30:15];
+    q_samp2 = INVERSE ? samp2_qsub[30:15] : samp2_qadd[30:15];
 end
 
 endmodule
